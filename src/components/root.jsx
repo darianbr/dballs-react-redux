@@ -4,6 +4,7 @@ import {routeNodeSelector} from 'redux-router5'
 import {startsWithSegment} from 'router5.helpers'
 
 import Dashboard from '../screens/dashboard'
+import Foo from '../screens/foo'
 import NotFound from '../screens/not-found'
 
 export function Root ({route}) {
@@ -12,6 +13,8 @@ export function Root ({route}) {
 
   if (testRoute('dashboard')) {
     return <Dashboard params={params} />
+  } else if (testRoute('foo')) {
+    return <Foo params={params} />
   }
 
   return <NotFound />

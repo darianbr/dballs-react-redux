@@ -1,6 +1,6 @@
-import {compose, createStore, applyMiddleware} from 'redux'
+import {compose, createStore} from 'redux'
 import {render} from 'react-dom'
-import {router5Middleware} from 'redux-router5'
+import {reduxPlugin} from 'redux-router5'
 
 import configureRouter from './configure-router'
 import createRouter from './create-router'
@@ -12,17 +12,17 @@ const logOption = window.location.search.match(/\blog=(\d)\b/)
 // const enableLogs = logOption && logOption[1]
 const enableDebugLogs = logOption && logOption[1] > '1'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const router = configureRouter(createRouter({
   allowNotFound: true,
   strictQueryParams: false,
   enableDebugLogs
 }))
-const enhancer = composeEnhancers(
-  applyMiddleware(router5Middleware(router))
-)
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const enhancer = composeEnhancers()
 const store = createStore(reducer, enhancer)
 
+router.usePlugin(reduxPlugin(store.dispatch))
 router.start()
 
 render(App({store, router}), document.getElementById('app'))
