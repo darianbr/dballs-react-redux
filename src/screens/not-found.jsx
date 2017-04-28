@@ -1,14 +1,12 @@
 import React from 'react'
 
+import Headline from 'grommet/components/Headline'
 import Helmet from 'react-helmet'
-
-import Nav from '../components/nav'
 
 export function NotFound () {
   return <span>
     <Helmet title='Not found' />
-    <h1>Not found</h1>
-    <Nav />
+    <Headline>Not found</Headline>
   </span>
 }
 

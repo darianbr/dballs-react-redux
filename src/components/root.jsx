@@ -5,19 +5,23 @@ import {startsWithSegment} from 'router5.helpers'
 
 import Dashboard from '../screens/dashboard'
 import Foo from '../screens/foo'
+import Layout from './layout'
 import NotFound from '../screens/not-found'
 
 export function Root ({route}) {
   const {name, params} = route
   const testRoute = startsWithSegment(name)
+  let screen
 
   if (testRoute('dashboard')) {
-    return <Dashboard params={params} />
+    screen = <Dashboard params={params} />
   } else if (testRoute('foo')) {
-    return <Foo params={params} />
+    screen = <Foo params={params} />
+  } else {
+    screen = <NotFound />
   }
 
-  return <NotFound />
+  return <Layout>{screen}</Layout>
 }
 
 export default connect(

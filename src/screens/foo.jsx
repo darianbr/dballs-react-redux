@@ -1,14 +1,12 @@
 import React from 'react'
 
+import Heading from 'grommet/components/Heading'
 import Helmet from 'react-helmet'
-
-import Nav from '../components/nav'
 
 export function Foo () {
   return <span>
     <Helmet title='Foo' />
-    <h1>Foo</h1>
-    <Nav />
+    <Heading>Foo</Heading>
   </span>
 }
 
