@@ -13,8 +13,8 @@ open-coverage:
 
 .PHONY: lint
 lint: node_modules
-	node_modules/.bin/standard --fix
 	node_modules/.bin/eslint . --ext .js --ext .jsx
+	node_modules/.bin/standard --fix
 
 .PHONY: build
 build: node_modules
