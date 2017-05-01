@@ -1,10 +1,12 @@
 import React from 'react'
-import {withRoute} from 'react-router5'
+import PropTypes from 'prop-types'
 
 import GrommetAnchor from 'grommet/components/Anchor'
 
-export function Anchor (props) {
-  const {label, routeName, routeParams, onClick: userOnClick, children, router} = props
+export function Anchor (props, context) {
+  const {label, routeName, routeParams, onClick: userOnClick, children} = props
+  const {router} = context
+
   const href = router.buildPath(routeName, routeParams)
 
   function onClick (...args) {
@@ -19,4 +21,6 @@ export function Anchor (props) {
   return <GrommetAnchor href={href} onClick={onClick} label={label}>{children}</GrommetAnchor>
 }
 
-export default withRoute(Anchor)
+Anchor.contextTypes = {router: PropTypes.object}
+
+export default Anchor
