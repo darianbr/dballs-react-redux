@@ -35,7 +35,7 @@
     "mocha": "^4.0.1",
     "nyc": "^11.2.1",
     "standard": "^10.0.3",
-    "webpack-dev-server": "^2.9.3"
+    "webpack-dev-server": "^3.1.11"
   },
   "why": {
     "babel-core": "Peer dependency of babel-loader.",
